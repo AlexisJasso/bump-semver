@@ -1,6 +1,6 @@
 # Bump Semver
 
-A Github Action to automatically bump and tag master with the latest
+A Github Action to automatically bump and tag main with the latest
 SemVer formatted version.
 
 ## Usage
@@ -10,14 +10,16 @@ name: Bump version
 on:
   push:
     branches:
-      - master
+      - main
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@main
+    - name: Prepare local repository
+      run: git fetch --prune --unshallow --tags -f
     - name: Bump version and push tag
-      uses: AlexisJasso/bump-semver@v1.0.3
+      uses: AlexisJasso/bump-semver@v1.0.5
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         prefix: mygroup/
@@ -38,6 +40,7 @@ jobs:
 
 * **tag** - The latest tag after running this action.
 * **version** - The semantic version without any "v" or other prefixes.
+* **bumped** - Set to "true" if the version was bumped, otherwise "false"
 
 > ***Note:*** This action creates a [lightweight tag](https://developer.github.com/v3/git/refs/#create-a-reference).
 
