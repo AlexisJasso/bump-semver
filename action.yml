@@ -25,6 +25,8 @@ outputs:
     description: 'The latest tag after running this action'
   version:
     description: 'The semantic version without any "v" or other prefixes'
+  bumped:
+    description: 'Set to "true" if the version was bumped, otherwise "false"'
 branding:
   icon: 'git-merge'
   color: 'purple'

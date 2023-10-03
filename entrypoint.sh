@@ -6,6 +6,7 @@ NPM=${INPUT_NPM}
 PACKAGE_JSON_PATH=${INPUT_PACKAGE_JSON_PATH}
 
 git config --global --add safe.directory $PWD
+echo "bumped=false" >> $GITHUB_OUTPUT
 
 # fetch tags
 git fetch --tags
@@ -63,6 +64,7 @@ echo "$NEW"
 # set outputs
 echo "tag=$NEW" >> $GITHUB_OUTPUT
 echo "version=$VERSION" >> $GITHUB_OUTPUT
+echo "bumped=true" >> $GITHUB_OUTPUT
 
 if [[ "$NPM" = true  && -f "$PACKAGE_JSON_PATH" ]]; then
     # update package.json
