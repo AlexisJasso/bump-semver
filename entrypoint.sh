@@ -44,9 +44,9 @@ fi
 # get commit logs and determine home to bump the version
 # supports #major, #minor, #patch (anything else will be 'minor')
 case "$LOG" in
-    *#${PREFIX}major* ) VERSION=$(semver bump major "$VERSION");;
-    *#${PREFIX}minor* ) VERSION=$(semver bump minor "$VERSION");;
-    *#${PREFIX}patch* ) VERSION=$(semver bump patch "$VERSION");;
+    *#major* ) VERSION=$(semver bump major "$VERSION");;
+    *#minor* ) VERSION=$(semver bump minor "$VERSION");;
+    *#patch* ) VERSION=$(semver bump patch "$VERSION");;
     * ) exit 0 ;;
 esac
 
